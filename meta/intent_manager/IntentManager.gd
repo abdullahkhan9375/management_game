@@ -19,6 +19,7 @@ func _on_threshold_breached(behavior_name, work_needed):
 func _on_tick():
 	for behav in behaviors:
 		behav._on_tick();
+	print("behaviors ticked!")
 
 # Example function to handle or process all breached behaviors (if needed)
 func process_breached_behaviors():

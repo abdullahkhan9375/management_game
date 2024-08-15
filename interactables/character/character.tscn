@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgej12v08l3ir"]
+[gd_scene load_steps=15 format=3 uid="uid://bgej12v08l3ir"]
 
-[ext_resource type="Script" path="res://interactables/character/Character.gd" id="1_aqykw"]
 [ext_resource type="Texture2D" uid="uid://c1sioejkp7sdi" path="res://interactables/character/idle/idle_1.png" id="1_c40pe"]
 [ext_resource type="Texture2D" uid="uid://btsfnbmrduekh" path="res://interactables/character/idle/idle_2.png" id="2_cr8g8"]
 [ext_resource type="Texture2D" uid="uid://rrk828yafq6y" path="res://interactables/character/idle/idle_3.png" id="3_72hoa"]
@@ -60,9 +59,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="Area2D"]
+[node name="Character" type="Area2D"]
 position = Vector2(42, 52)
-script = ExtResource("1_aqykw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
