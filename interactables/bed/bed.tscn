@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4mo6cflv0bul"]
+
+[ext_resource type="Texture2D" uid="uid://b23wggykxfy4s" path="res://interactables/bed/sprite/Screenshot 2024-08-13 at 9.14.44 am.png" id="1_daw8c"]
+[ext_resource type="Texture2D" uid="uid://c8e6yhynq10vh" path="res://interactables/bed/sprite/Screenshot 2024-08-13 at 9.15.09 am.png" id="2_gtcbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4agvq"]
+size = Vector2(169, 169)
+
+[node name="Bed" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_daw8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_4agvq")
+
+[node name="Screenshot2024-08-13At9_15_09Am" type="Sprite2D" parent="."]
+position = Vector2(426, -31)
+texture = ExtResource("2_gtcbl")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coh3u3qu80pvl"]
+
+[ext_resource type="Script" path="res://meta/scheduler/Scheduler.gd" id="1_a5evw"]
+
+[node name="Scheduler" type="Node"]
+script = ExtResource("1_a5evw")

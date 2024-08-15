@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgej12v08l3ir"]
+
+[ext_resource type="Script" path="res://interactables/character/Character.gd" id="1_aqykw"]
+[ext_resource type="Texture2D" uid="uid://c1sioejkp7sdi" path="res://interactables/character/idle/idle_1.png" id="1_c40pe"]
+[ext_resource type="Texture2D" uid="uid://btsfnbmrduekh" path="res://interactables/character/idle/idle_2.png" id="2_cr8g8"]
+[ext_resource type="Texture2D" uid="uid://rrk828yafq6y" path="res://interactables/character/idle/idle_3.png" id="3_72hoa"]
+[ext_resource type="Texture2D" uid="uid://b2hg8knuqce4u" path="res://interactables/character/idle/idle_4.png" id="4_prgnv"]
+[ext_resource type="Script" path="res://meta/intent_manager/IntentManager.gd" id="5_j4uaf"]
+[ext_resource type="Script" path="res://meta/task_manager/TaskManager.gd" id="6_b2cpi"]
+[ext_resource type="Texture2D" uid="uid://ccvravkhnpb2q" path="res://interactables/character/moving/walk_1.png" id="6_sm45i"]
+[ext_resource type="Texture2D" uid="uid://m46hgwmhlpsa" path="res://interactables/character/moving/walk_2.png" id="7_js5a3"]
+[ext_resource type="Texture2D" uid="uid://oeo4labgbeq2" path="res://interactables/character/moving/walk_3.png" id="8_sk1k6"]
+[ext_resource type="Texture2D" uid="uid://rte51qpulbga" path="res://interactables/character/moving/walk_4.png" id="9_o5w1x"]
+[ext_resource type="Texture2D" uid="uid://bsmr4n184awcs" path="res://interactables/character/moving/walk_5.png" id="10_s47lc"]
+[ext_resource type="Texture2D" uid="uid://da6vm4qvj7i5" path="res://interactables/character/moving/walk_6.png" id="11_bs4jp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmj2m"]
+size = Vector2(70, 101)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_toyje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c40pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cr8g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_72hoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_prgnv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sm45i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_js5a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sk1k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o5w1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s47lc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bs4jp")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 8.0
+}]
+
+[node name="Player" type="Area2D"]
+position = Vector2(42, 52)
+script = ExtResource("1_aqykw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_tmj2m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_toyje")
+animation = &"moving"
+frame_progress = 0.711884
+
+[node name="IntentManager" type="Node" parent="."]
+script = ExtResource("5_j4uaf")
+
+[node name="TaskManager" type="Node" parent="IntentManager"]
+script = ExtResource("6_b2cpi")
