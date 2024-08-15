@@ -2,7 +2,10 @@ extends Node
 
 class_name TaskManager
 
-var task_list = []
+var task_list: Array
+
+func _init():
+	task_list = []
 
 func sorter(t1: Task, t2: Task):
 	return t1.priority >= t2.priority
@@ -10,18 +13,26 @@ func sorter(t1: Task, t2: Task):
 func rearrange_tasks():
 	task_list.sort_custom(sorter)
 
-func register_breached_behavior(behavior_name, work_needed):
-	print("breached!")
-	for task in task_list:
-		if (task.type == behavior_name):
-			task.set_priority(task.priority + 1)
-			task.set_work(work_needed)
-			rearrange_tasks()
-			return
+func register_breached_behavior(behavior: Behavior):
+	var behavior_name = behavior.behavior_name
+	var work_needed = behavior.max_value - behavior.value 
+	if (!task_exists(behavior)):
+		var task = TaskFactory.Create(behavior)
+		task_list.append(task)
+		rearrange_tasks()
+	else:	
+		for task in task_list:
+			if (task.type == behavior_name and task.is_inactive()):
+				task.set_priority(task.priority + 1)
+				task.set_work(work_needed)
+				rearrange_tasks()
 			
-	var task = TaskFactory.Create(behavior_name, work_needed)
-	task_list.append(task)
-	rearrange_tasks()
+	
+func task_exists(behavior):
+	for task in task_list:
+		if (behavior.behavior_name == task.type):
+			return true
+	return false
 
 func current_task():
 	if (len(task_list) > 0): return task_list[0]
@@ -37,5 +48,5 @@ func remove_task(task_type):
 		if task.type == task_type:
 			continue
 		filtered_li.append(task)
-	task_list = filtered_li
+	self.task_list = filtered_li
 

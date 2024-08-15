@@ -16,5 +16,9 @@ func on_moving():
     state = "MOVING"
     sprite.play('moving')
 
+func on_busy():
+    state = "BUSY"
+    sprite.play('idle')
+
 func get_state():
     return state

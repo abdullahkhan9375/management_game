@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgej12v08l3ir"]
+[gd_scene load_steps=13 format=3 uid="uid://bgej12v08l3ir"]
 
 [ext_resource type="Texture2D" uid="uid://c1sioejkp7sdi" path="res://interactables/character/idle/idle_1.png" id="1_c40pe"]
 [ext_resource type="Texture2D" uid="uid://btsfnbmrduekh" path="res://interactables/character/idle/idle_2.png" id="2_cr8g8"]
 [ext_resource type="Texture2D" uid="uid://rrk828yafq6y" path="res://interactables/character/idle/idle_3.png" id="3_72hoa"]
 [ext_resource type="Texture2D" uid="uid://b2hg8knuqce4u" path="res://interactables/character/idle/idle_4.png" id="4_prgnv"]
-[ext_resource type="Script" path="res://meta/intent_manager/IntentManager.gd" id="5_j4uaf"]
-[ext_resource type="Script" path="res://meta/task_manager/TaskManager.gd" id="6_b2cpi"]
 [ext_resource type="Texture2D" uid="uid://ccvravkhnpb2q" path="res://interactables/character/moving/walk_1.png" id="6_sm45i"]
 [ext_resource type="Texture2D" uid="uid://m46hgwmhlpsa" path="res://interactables/character/moving/walk_2.png" id="7_js5a3"]
 [ext_resource type="Texture2D" uid="uid://oeo4labgbeq2" path="res://interactables/character/moving/walk_3.png" id="8_sk1k6"]
@@ -72,8 +70,4 @@ sprite_frames = SubResource("SpriteFrames_toyje")
 animation = &"moving"
 frame_progress = 0.711884
 
-[node name="IntentManager" type="Node" parent="."]
-script = ExtResource("5_j4uaf")
-
-[node name="TaskManager" type="Node" parent="IntentManager"]
-script = ExtResource("6_b2cpi")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
