@@ -20,17 +20,19 @@ script = ExtResource("1_82i70")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_ikbgp")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1150.0
 offset_bottom = 642.0
 texture = ExtResource("2_2y3f7")
+metadata/_edit_lock_ = true
 
 [node name="Scheduler" parent="." instance=ExtResource("2_nge3n")]
 INTERVAL = 1
 
 [node name="Bed" type="Area2D" parent="." groups=["Interactable", "Sleep"]]
-position = Vector2(838, 264)
+position = Vector2(1054, 84)
 script = ExtResource("6_dlhnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
@@ -43,7 +45,7 @@ scale = Vector2(0.715116, 0.697674)
 texture = ExtResource("6_oectw")
 
 [node name="Player" parent="." instance=ExtResource("3_w15cv")]
-position = Vector2(373, 313)
+position = Vector2(274, 376)
 script = ExtResource("5_w0pnv")
 
 [connection signal="tick" from="Scheduler" to="Bed" method="_on_tick"]

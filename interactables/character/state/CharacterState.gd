@@ -4,9 +4,9 @@ class_name CharacterStateManager
 var state;
 var sprite;
 
-# Called when the node enters the scene tree for the first time.
 func _init(Sprite: AnimatedSprite2D):
     self.sprite = Sprite
+    on_idle()
 
 func on_idle():
     state = "IDLE"
