@@ -5,6 +5,7 @@ class_name Interactable
 var task: Task
 var is_free: bool = true
 var character: Character
+var scheduler: Scheduler
 
 func _init():
 	character = null
@@ -13,6 +14,7 @@ func _init():
 func on_interaction_start(character: Character):
 	self.character = character
 	task = character.get_task()
+	if (task == null): return
 	print("task registered: %s", [task.task_name])
 	is_free = false
 
@@ -29,6 +31,12 @@ func on_interaction_end():
 	if (task != null):
 		task.end()
 		task = null
+	is_free = true
+
+func set_occupied():
+	is_free = false
+
+func set_free():
 	is_free = true
 
 static func find_interactable(tree, task_type):

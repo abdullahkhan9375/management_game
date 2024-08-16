@@ -12,7 +12,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(7, 2, 1150, 6, 1143, 64
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tytwc"]
-size = Vector2(108, 112)
+size = Vector2(106, 111)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_82i70")
@@ -48,19 +48,14 @@ position = Vector2(1054, 84)
 script = ExtResource("6_dlhnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-position = Vector2(-3, 0)
+position = Vector2(-2, -0.5)
 shape = SubResource("RectangleShape2D_tytwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bed"]
-position = Vector2(-2, 0)
-scale = Vector2(0.715116, 0.697674)
+position = Vector2(-1.25005, -0.999998)
+scale = Vector2(0.706396, 0.697674)
 texture = ExtResource("6_oectw")
 
 [node name="Player" parent="." instance=ExtResource("3_w15cv")]
 position = Vector2(274, 376)
-
-[node name="Player2" parent="." instance=ExtResource("3_w15cv")]
-position = Vector2(274, 376)
-
-[connection signal="tick" from="Scheduler" to="Bed" method="_on_tick"]
-[connection signal="tick" from="Scheduler" to="Player" method="_on_tick"]
+some_name = "Tony"

@@ -8,6 +8,7 @@ func _init():
 func _ready():
 	self.connect("area_entered", _on_area_entered)
 	self.connect("area_exited", _on_area_exited)
+	get_parent().get_node("Scheduler").connect('tick', _on_tick)
 
 func _on_area_entered(character):
 	self.on_interaction_start(character) 
@@ -16,5 +17,5 @@ func _on_tick():
 	super._on_tick()
 
 func _on_area_exited(character):
-	print("%s left", [character.cname])
+	print("area exited")
 	self.on_interaction_end()

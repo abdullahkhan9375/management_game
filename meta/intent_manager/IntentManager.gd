@@ -4,10 +4,12 @@ class_name IntentManager
 
 var behaviors: Array
 var task_manager: TaskManager
+var c_name: String
 
-func _init(tsk_manager: TaskManager):
-	print("intent manager initialized")
+func _init(tsk_manager: TaskManager, some_name: String):
+	print("intent manager initialized for %", [some_name])
 	self.task_manager = tsk_manager
+	self.c_name = some_name
 	behaviors = []
 	behaviors.append(SleepBehavior.new())
 	for behav in behaviors:
@@ -16,4 +18,4 @@ func _init(tsk_manager: TaskManager):
 func _on_tick():
 	for behav in behaviors:
 		behav._on_tick();
-		print("sleep value: %", [behav.value])
+		print("sleep value: ", [self.c_name, behav.value])

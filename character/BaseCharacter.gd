@@ -16,11 +16,3 @@ func _init(c_name: String):
 
 func get_productivity():
     return productivity;
-
-func move_to(position: Vector2, delta):
-    if position.x < self.position.x:
-        self.scale.x = -abs(self.scale.x)  # Flip the character to face left
-    elif position.x > self.position.x:
-        self.scale.x = abs(self.scale.x)
-    var direction = self.position.move_toward(position, move_speed * delta)
-    self.position = direction

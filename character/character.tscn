@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgej12v08l3ir"]
+[gd_scene load_steps=15 format=3 uid="uid://bgej12v08l3ir"]
 
 [ext_resource type="Texture2D" uid="uid://c1sioejkp7sdi" path="res://character/idle/idle_1.png" id="1_c40pe"]
 [ext_resource type="Script" path="res://character/Character.gd" id="1_cg42v"]
@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://rte51qpulbga" path="res://character/moving/walk_4.png" id="9_o5w1x"]
 [ext_resource type="Texture2D" uid="uid://bsmr4n184awcs" path="res://character/moving/walk_5.png" id="10_s47lc"]
 [ext_resource type="Texture2D" uid="uid://da6vm4qvj7i5" path="res://character/moving/walk_6.png" id="11_bs4jp"]
+[ext_resource type="Script" path="res://character/Movable.gd" id="12_sjwx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmj2m"]
-size = Vector2(70, 101)
+size = Vector2(51, 83)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_toyje"]
 animations = [{
@@ -61,9 +62,10 @@ animations = [{
 [node name="Character" type="Area2D"]
 position = Vector2(42, 52)
 script = ExtResource("1_cg42v")
+some_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_tmj2m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -71,3 +73,6 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_toyje")
 animation = &"moving"
 frame_progress = 0.711884
+
+[node name="Movable" type="Node2D" parent="."]
+script = ExtResource("12_sjwx0")

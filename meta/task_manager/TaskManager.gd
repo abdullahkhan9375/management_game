@@ -3,8 +3,10 @@ extends Node
 class_name TaskManager
 
 var task_list: Array
+var c_name: String 
 
-func _init():
+func _init(c_name: String):
+	self.c_name = c_name
 	task_list = []
 
 func sorter(t1: Task, t2: Task):
@@ -18,6 +20,7 @@ func register_breached_behavior(behavior: Behavior):
 	var work_needed = behavior.max_value - behavior.value 
 	if (!task_exists(behavior)):
 		var task = TaskFactory.Create(behavior)
+		print("new task added: %", [task.task_name])
 		task_list.append(task)
 		rearrange_tasks()
 	else:	
@@ -25,8 +28,8 @@ func register_breached_behavior(behavior: Behavior):
 			if (task.type == behavior_name and task.is_inactive()):
 				task.set_priority(task.priority + 1)
 				task.set_work(work_needed)
+				print("task updated: %", [task.task_name])
 				rearrange_tasks()
-			
 	
 func task_exists(behavior):
 	for task in task_list:
@@ -40,7 +43,7 @@ func current_task():
 
 func print_tasks():
 	for task in task_list:
-		print("%s, %s, %s" % [task.task_name, task.work, task.priority])
+		print("%, %, %, %", [self.c_name, task.task_name, task.work, task.priority])
 
 func remove_task(task_type):
 	var filtered_li = []
