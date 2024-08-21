@@ -1,18 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp4jhayosudp4"]
+[gd_scene load_steps=8 format=3 uid="uid://dp4jhayosudp4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_82i70"]
 [ext_resource type="Texture2D" uid="uid://20x2052udqqr" path="res://Screenshot 2024-08-14 at 8.20.44 am.png" id="2_2y3f7"]
-[ext_resource type="PackedScene" uid="uid://coh3u3qu80pvl" path="res://meta/scheduler/scheduler.tscn" id="2_nge3n"]
+[ext_resource type="PackedScene" uid="uid://coh3u3qu80pvl" path="res://meta/clock/clock.tscn" id="2_nge3n"]
 [ext_resource type="PackedScene" uid="uid://bgej12v08l3ir" path="res://character/character.tscn" id="3_w15cv"]
-[ext_resource type="Script" path="res://interactables/bed/bed.gd" id="6_dlhnf"]
-[ext_resource type="Texture2D" uid="uid://b23wggykxfy4s" path="res://interactables/bed/sprite/Screenshot 2024-08-13 at 9.14.44 am.png" id="6_oectw"]
+[ext_resource type="PackedScene" uid="uid://d1o3pmy8orjtc" path="res://interactables/bed/bed.tscn" id="5_na0bw"]
+[ext_resource type="PackedScene" uid="uid://mliqfhv2a6na" path="res://interactables/work/work_station.tscn" id="5_qca18"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ikbgp"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(7, 2, 1150, 6, 1143, 641, 5, 644)])
 source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tytwc"]
-size = Vector2(106, 111)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_82i70")
@@ -27,35 +24,25 @@ offset_bottom = 642.0
 texture = ExtResource("2_2y3f7")
 metadata/_edit_lock_ = true
 
-[node name="Scheduler" parent="." instance=ExtResource("2_nge3n")]
-INTERVAL = 1
+[node name="Clock" parent="." instance=ExtResource("2_nge3n")]
+INTERVAL = 0.02
 
-[node name="Bed2" type="Area2D" parent="." groups=["Interactable", "Sleep"]]
-position = Vector2(730, 81)
-script = ExtResource("6_dlhnf")
+[node name="Bed2" parent="." instance=ExtResource("5_na0bw")]
+position = Vector2(822, 95)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed2"]
-position = Vector2(-3, 0)
-shape = SubResource("RectangleShape2D_tytwc")
+[node name="Bed" parent="." instance=ExtResource("5_na0bw")]
+position = Vector2(1046, 95)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bed2"]
-position = Vector2(-2, 0)
-scale = Vector2(0.715116, 0.697674)
-texture = ExtResource("6_oectw")
+[node name="WorkStation" parent="." instance=ExtResource("5_qca18")]
+position = Vector2(711, 566)
 
-[node name="Bed" type="Area2D" parent="." groups=["Interactable", "Sleep"]]
-position = Vector2(1054, 84)
-script = ExtResource("6_dlhnf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-position = Vector2(-2, -0.5)
-shape = SubResource("RectangleShape2D_tytwc")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bed"]
-position = Vector2(-1.25005, -0.999998)
-scale = Vector2(0.706396, 0.697674)
-texture = ExtResource("6_oectw")
+[node name="WorkStation2" parent="." instance=ExtResource("5_qca18")]
+position = Vector2(893, 568)
 
 [node name="Player" parent="." instance=ExtResource("3_w15cv")]
 position = Vector2(274, 376)
+some_name = "Bob"
+
+[node name="Player2" parent="." instance=ExtResource("3_w15cv")]
+position = Vector2(268, 524)
 some_name = "Tony"

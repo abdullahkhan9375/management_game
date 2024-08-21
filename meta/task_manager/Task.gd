@@ -44,8 +44,10 @@ func on_work(work_unit):
 	if (self.work > 0):
 		self.state = TASK_STATE.ONGOING
 		self.work -= work_unit
-	else:
-		self.state = TASK_STATE.COMPLETED
+		return
+	self.work = 0
+	self.state = TASK_STATE.COMPLETED
+	print("task completed")
 
 func set_priority(priority):
 	if (priority <= 10):

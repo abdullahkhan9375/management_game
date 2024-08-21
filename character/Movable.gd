@@ -1,7 +1,6 @@
 extends Node2D
 class_name Movable
 
-var char_position: Vector2
 var target_position = null
 var can_move = false
 var move_speed: int
@@ -27,13 +26,11 @@ func _move_to_target_position(delta):
 		character.position = target_position
 		can_move = false
 
-func set_target_position(target_position):
-	self.target_position = target_position
-
 func set_move_speed(move_speed):
 	self.move_speed = move_speed
 
-func move():
+func move_to(target_position):
+	self.target_position = target_position
 	can_move = true
 
 func has_reached():

@@ -1,47 +1,50 @@
-extends Node
+extends Node2D
 
 class_name Interactable
 
 var task: Task
+var task_state: Task.TASK_STATE
 var is_free: bool = true
 var character: Character
-var scheduler: Scheduler
+var clock: Clock 
 
 func _init():
 	character = null
+
+func _ready():
 	add_to_group("Interactable")
+	get_parent().get_node("Clock").connect("tick", _on_tick)
 
 func on_interaction_start(character: Character):
 	self.character = character
 	task = character.get_task()
 	if (task == null): return
-	print("task registered: %s", [task.task_name])
 	is_free = false
 
-func _on_tick():
+func _on_tick(hour):
 	if (task == null or character == null): return
 	task.on_work(character.get_productivity());
-	character.task_control(Task.TASK_STATE.ONGOING)
+	character.task_control(task)
+	print("working %", [character.cname])
+	print("work left %", [task.work])
 	if (task.is_completed()):
-		on_interaction_end()
-		character.task_control(Task.TASK_STATE.COMPLETED)
-		return
+		on_interaction_end(character)
 
-func on_interaction_end():
-	if (task != null):
-		task.end()
-		task = null
+func on_interaction_end(character: Character):
+	if (task == null or character == null): return
+	if (character.some_name != self.character.some_name): return
+	task.end()
+	character.task_control(task)
 	is_free = true
+	task = null
 
 func set_occupied():
 	is_free = false
 
-func set_free():
-	is_free = true
-
-static func find_interactable(tree, task_type):
+static func find_interactable(tree, type):
 	var nodes = tree.get_nodes_in_group("Interactable")
 	for node in nodes:
-		if (node.is_in_group(task_type) and node.is_free):
+		if (node.is_in_group(type) and node.is_free):
+			node.set_occupied()
 			return node
 	return null

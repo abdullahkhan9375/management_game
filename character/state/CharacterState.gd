@@ -3,6 +3,7 @@ extends Node
 class_name CharacterStateManager
 var state;
 var sprite;
+var block;
 
 func _init(Sprite: AnimatedSprite2D):
 	self.sprite = Sprite

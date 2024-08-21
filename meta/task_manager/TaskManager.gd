@@ -20,15 +20,13 @@ func register_breached_behavior(behavior: Behavior):
 	var work_needed = behavior.max_value - behavior.value 
 	if (!task_exists(behavior)):
 		var task = TaskFactory.Create(behavior)
-		print("new task added: %", [task.task_name])
 		task_list.append(task)
 		rearrange_tasks()
-	else:	
+	else:
 		for task in task_list:
-			if (task.type == behavior_name and task.is_inactive()):
+			if (task.type == behavior_name and !task.is_ongoing()):
 				task.set_priority(task.priority + 1)
 				task.set_work(work_needed)
-				print("task updated: %", [task.task_name])
 				rearrange_tasks()
 	
 func task_exists(behavior):

@@ -15,7 +15,7 @@ func _init(tsk_manager: TaskManager, some_name: String):
 	for behav in behaviors:
 		behav.threshold_breached.connect(task_manager.register_breached_behavior)
 
-func _on_tick():
+func _on_tick(hour):
 	for behav in behaviors:
 		behav._on_tick();
 		print("sleep value: ", [self.c_name, behav.value])

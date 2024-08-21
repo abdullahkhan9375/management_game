@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://character/Movable.gd" id="12_sjwx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmj2m"]
-size = Vector2(51, 83)
+size = Vector2(25, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_toyje"]
 animations = [{
@@ -59,16 +59,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Character" type="Area2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(42, 52)
 script = ExtResource("1_cg42v")
 some_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_tmj2m")
+debug_color = Color(0.853747, 0.000806878, 0.891025, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_toyje")
 animation = &"moving"
