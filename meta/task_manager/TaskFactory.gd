@@ -2,12 +2,16 @@ extends Node
 
 class_name TaskFactory
 
-static func CreateTiredTask(behavior, priority):
-	return TiredTask.new(behavior, priority)
+static func CreateTiredTask(rep, priority):
+	return TiredTask.new(rep, priority)
 
-static func Create(behavior: Behavior):
-	var behavior_name = behavior.behavior_name
+static func CreateProject(rep, priority):
+	return WorkTask.new(rep, 1)
 
-	if (behavior_name == 'Sleep'):
-		return CreateTiredTask(behavior, 1)
-	assert(true, "behavior not recognized")
+static func Create(rep: Replenishable):
+	if (rep.get_type() == 'Sleep'):
+		return CreateTiredTask(rep, 1)
+	elif (rep.get_type() == "Work"):
+		return CreateProject(rep, 1)
+
+	assert(true, "replenishable not recognized")

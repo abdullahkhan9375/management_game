@@ -6,6 +6,7 @@ var task_list: Array
 var c_name: String 
 
 func _init(c_name: String):
+	#TODO: remove this. only for debugging purposes.
 	self.c_name = c_name
 	task_list = []
 
@@ -15,23 +16,24 @@ func sorter(t1: Task, t2: Task):
 func rearrange_tasks():
 	task_list.sort_custom(sorter)
 
-func register_breached_behavior(behavior: Behavior):
-	var behavior_name = behavior.behavior_name
-	var work_needed = behavior.max_value - behavior.value 
-	if (!task_exists(behavior)):
-		var task = TaskFactory.Create(behavior)
+func register_breached_behavior(rep: Replenishable):
+	var behavior_type = rep.data['type']
+	var work_needed = rep.get_work_units()
+	if (!task_exists(behavior_type)):
+		var task = TaskFactory.Create(rep)
+		rep.register_signal(task)
 		task_list.append(task)
 		rearrange_tasks()
 	else:
 		for task in task_list:
-			if (task.type == behavior_name and !task.is_ongoing()):
+			if (task.type == behavior_type and !task.is_ongoing()):
 				task.set_priority(task.priority + 1)
 				task.set_work(work_needed)
 				rearrange_tasks()
-	
-func task_exists(behavior):
+
+func task_exists(type):
 	for task in task_list:
-		if (behavior.behavior_name == task.type):
+		if (type == task.type):
 			return true
 	return false
 

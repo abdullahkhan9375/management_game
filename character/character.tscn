@@ -62,7 +62,6 @@ animations = [{
 [node name="Player" type="Area2D"]
 position = Vector2(42, 52)
 script = ExtResource("1_cg42v")
-some_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tmj2m")

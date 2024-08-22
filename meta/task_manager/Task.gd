@@ -7,8 +7,8 @@ var work: float
 var priority: int
 var state: TASK_STATE
 var type: String
-var behavior: Behavior
 var original_value: float
+signal replenish(amount: float)
 
 enum TASK_STATE {
 	INACTIVE,
@@ -23,7 +23,7 @@ func _init(work_needed, priority):
 	self.original_value = work_needed
 
 func is_completed():
-	return state == TASK_STATE.COMPLETED
+	return self.work <= 0
 
 func is_ongoing():
 	return state == TASK_STATE.ONGOING
@@ -32,21 +32,18 @@ func is_inactive():
 	return state == TASK_STATE.INACTIVE
 
 func end():
-	print("task ended with % %", [work, priority])
 	if (self.work > 0):
 		state = TASK_STATE.INACTIVE
-		behavior.replenish(self.original_value - self.work)
 	else:
 		state = TASK_STATE.COMPLETED
-		behavior.replenish_full()
 
 func on_work(work_unit):
 	if (self.work > 0):
 		self.state = TASK_STATE.ONGOING
 		self.work -= work_unit
+		emit_signal("replenish", work_unit)
 		return
 	self.work = 0
-	self.state = TASK_STATE.COMPLETED
 	print("task completed")
 
 func set_priority(priority):

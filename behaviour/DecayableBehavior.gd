@@ -8,15 +8,15 @@ var threshold: float = 30.0
 
 signal threshold_breached(behavior)
 
+func _init(Type, Value, Max_Value):
+	super._init(Type, Value, Max_Value)
+
 func _on_tick():
-	data['value'] -= decay_rate
-	if data["value"] < 0:
-		data["value"] = 0
+	value -= decay_rate
+	if value < 0:
+		value = 0
 	check_threshold()
 
 func check_threshold():
-	if data["value"] <= threshold:
+	if value <= threshold:
 		emit_signal("threshold_breached", self)
-
-func get_work_units():
-	return data["max_value"] - data["value"]

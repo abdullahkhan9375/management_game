@@ -11,11 +11,10 @@ func _init(tsk_manager: TaskManager, some_name: String):
 	self.task_manager = tsk_manager
 	self.c_name = some_name
 	behaviors = []
-	behaviors.append(SleepBehavior.new())
+	behaviors.append(Sleep.new())
 	for behav in behaviors:
 		behav.threshold_breached.connect(task_manager.register_breached_behavior)
 
 func _on_tick(hour):
 	for behav in behaviors:
 		behav._on_tick();
-		print("sleep value: ", [self.c_name, behav.value])

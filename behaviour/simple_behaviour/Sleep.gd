@@ -1,10 +1,8 @@
-extends Behavior
+extends DecayableBehavior
 
-class_name SleepBehavior
+class_name Sleep
 
 func _init():
-	# Customize the decay rate, threshold, and max value for sleep
-	behavior_name = "Sleep"
 	decay_rate = 5
 	threshold = randi() % 10 + 70
-	max_value = randi() % 31 + 90
+	super._init("Sleep", 100, randi() % 31 + 90)

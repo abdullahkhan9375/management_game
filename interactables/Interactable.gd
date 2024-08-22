@@ -6,15 +6,11 @@ var task: Task
 var task_state: Task.TASK_STATE
 var is_free: bool = true
 var character: Character
-var clock: Clock 
-
-func _init():
-	character = null
 
 func _ready():
 	add_to_group("Interactable")
-	get_parent().get_node("Clock").connect("tick", _on_tick)
-
+	character = null
+	
 func on_interaction_start(character: Character):
 	self.character = character
 	task = character.get_task()
@@ -25,7 +21,6 @@ func _on_tick(hour):
 	if (task == null or character == null): return
 	task.on_work(character.get_productivity());
 	character.task_control(task)
-	print("working %", [character.cname])
 	print("work left %", [task.work])
 	if (task.is_completed()):
 		on_interaction_end(character)
