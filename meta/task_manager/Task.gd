@@ -8,6 +8,7 @@ var priority: int
 var state: TASK_STATE
 var type: String
 var original_value: float
+var max_value: float
 signal replenish(amount: float)
 
 enum TASK_STATE {
@@ -16,11 +17,12 @@ enum TASK_STATE {
 	COMPLETED
 }
 
-func _init(work_needed, priority):
+func _init(work_needed, max_value, priority):
 	self.work = work_needed
 	self.priority = priority
 	self.state = TASK_STATE.INACTIVE
 	self.original_value = work_needed
+	self.max_value = max_value
 
 func is_completed():
 	return self.work <= 0
@@ -52,8 +54,11 @@ func set_priority(priority):
 	else:
 		self.priority = 10
 
+func is_maxed():
+	return self.work >= self.max_value
+
 func set_work(work):
-	if (self.work <= 100):
+	if (self.work <= self.max_value):
 		self.work = work
 	else:
-		self.work = 100
+		self.work = self.max_value

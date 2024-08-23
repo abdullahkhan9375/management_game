@@ -7,7 +7,7 @@ var data: Dictionary
 func _init(Type, Value, Max_value, Rep_name = ""):
 
 	data = {
-		"type": Type,
+		"task_type": Type,
 		"value": Value,
 		"max_value": Max_value,
 		"name": Rep_name 
@@ -22,8 +22,11 @@ func get_work_units():
 func get_rep_name():
 	return data["name"]
 
-func get_type():
-	return data["type"]
+func get_max_value():
+	return data["max_value"]
+
+func get_task_type():
+	return data["task_type"]
 
 func replenish(amount: float):
 	var val = data["value"]

@@ -6,7 +6,10 @@ var clock: Clock
 func _ready():
 	clock = $Clock
 	character_service = $CharacterService
-	character_service.create_character()
+	for i in range(0, 3):
+		character_service.create_character()
+	var proj = $ProjectManager
+	proj.assign_to_all()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

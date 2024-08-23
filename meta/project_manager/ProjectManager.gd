@@ -8,13 +8,13 @@ func _ready():
 func assign_to_all():
     var cservice = get_parent().get_node("CharacterService")
     var characters = cservice.get_characters()
-    var work = create_project("Project1", 200)
+    var work: Project = create_project("Project1", 200)
     for character in characters:
         character.task_manager.add_task(work)
 
 func create_project(name, work_units):
-    return TaskFactory.CreateProject(name, work_units) 
+    var work = Work.new(name, work_units)
+    return TaskFactory.Create(work) 
 
 func _on_tick(hour):
     pass
-

@@ -12,11 +12,13 @@ func _init(Type, Value, Max_Value):
 	super._init(Type, Value, Max_Value)
 
 func _on_tick():
-	value -= decay_rate
-	if value < 0:
-		value = 0
+	var val = data["value"]
+	val -= decay_rate
+	if val < 0:
+		val = 0
+	data['value'] = val
 	check_threshold()
 
 func check_threshold():
-	if value <= threshold:
+	if data["value"] <= threshold:
 		emit_signal("threshold_breached", self)

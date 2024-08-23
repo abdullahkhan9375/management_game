@@ -5,11 +5,10 @@ class_name Interactable
 var task: Task
 var task_state: Task.TASK_STATE
 var is_free: bool = true
-var character: Character
+var character: Character = null
 
 func _ready():
 	add_to_group("Interactable")
-	character = null
 	
 func on_interaction_start(character: Character):
 	self.character = character
@@ -27,7 +26,6 @@ func _on_tick(hour):
 
 func on_interaction_end(character: Character):
 	if (task == null or character == null): return
-	if (character.some_name != self.character.some_name): return
 	task.end()
 	character.task_control(task)
 	is_free = true

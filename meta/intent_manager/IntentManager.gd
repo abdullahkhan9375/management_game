@@ -6,10 +6,8 @@ var behaviors: Array
 var task_manager: TaskManager
 var c_name: String
 
-func _init(tsk_manager: TaskManager, some_name: String):
-	print("intent manager initialized for %", [some_name])
+func _init(tsk_manager: TaskManager):
 	self.task_manager = tsk_manager
-	self.c_name = some_name
 	behaviors = []
 	behaviors.append(Sleep.new())
 	for behav in behaviors:

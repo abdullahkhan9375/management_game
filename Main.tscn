@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp4jhayosudp4"]
+[gd_scene load_steps=8 format=3 uid="uid://dp4jhayosudp4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_82i70"]
 [ext_resource type="Texture2D" uid="uid://20x2052udqqr" path="res://Screenshot 2024-08-14 at 8.20.44 am.png" id="2_2y3f7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1o3pmy8orjtc" path="res://interactables/bed/bed.tscn" id="5_na0bw"]
 [ext_resource type="PackedScene" uid="uid://mliqfhv2a6na" path="res://interactables/work/work_station.tscn" id="5_qca18"]
 [ext_resource type="Script" path="res://meta/character_service/CharacterService.gd" id="6_uflqv"]
+[ext_resource type="Script" path="res://meta/project_manager/ProjectManager.gd" id="7_y6jfa"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_82i70")
@@ -27,10 +28,10 @@ position = Vector2(822, 95)
 position = Vector2(1046, 95)
 
 [node name="WorkStation" parent="." instance=ExtResource("5_qca18")]
-position = Vector2(711, 566)
-
-[node name="WorkStation2" parent="." instance=ExtResource("5_qca18")]
-position = Vector2(893, 568)
+position = Vector2(806, 559)
 
 [node name="CharacterService" type="Node" parent="."]
 script = ExtResource("6_uflqv")
+
+[node name="ProjectManager" type="Node" parent="."]
+script = ExtResource("7_y6jfa")

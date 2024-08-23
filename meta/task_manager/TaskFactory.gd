@@ -3,15 +3,16 @@ extends Node
 class_name TaskFactory
 
 static func CreateTiredTask(rep, priority):
-	return TiredTask.new(rep, priority)
+	return Rest.new(rep, priority)
 
 static func CreateProject(rep, priority):
-	return WorkTask.new(rep, 1)
+	return Project.new(rep, priority)
 
 static func Create(rep: Replenishable):
-	if (rep.get_type() == 'Sleep'):
+	if (rep.get_task_type() == 'Sleep'):
 		return CreateTiredTask(rep, 1)
-	elif (rep.get_type() == "Work"):
+
+	elif (rep.get_task_type() == "Work"):
 		return CreateProject(rep, 1)
 
 	assert(true, "replenishable not recognized")

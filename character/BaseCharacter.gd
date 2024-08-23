@@ -6,12 +6,11 @@ var BASE_MOVE_SPEED = 250
 var BASE_PRODUCTIVITY= 25
 
 var move_speed: int
-var cname: String
 var productivity: int
+@export var character_name: String
 
-func _init(c_name: String):
+func _init():
     move_speed = BASE_MOVE_SPEED
-    self.cname = c_name
     self.productivity = BASE_PRODUCTIVITY
 
 func get_productivity():
