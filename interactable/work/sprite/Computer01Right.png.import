@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cufgwqyln6xup"
-path="res://.godot/imported/Computer01Left.png-f64efe377f564506fa2ffe1ca900665d.ctex"
+uid="uid://ckouapo5pss06"
+path="res://.godot/imported/Computer01Right.png-259a2817a3d2a6f9748f441101a9ea3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/work/sprite/Computer01Left.png"
-dest_files=["res://.godot/imported/Computer01Left.png-f64efe377f564506fa2ffe1ca900665d.ctex"]
+source_file="res://interactable/work/sprite/Computer01Right.png"
+dest_files=["res://.godot/imported/Computer01Right.png-259a2817a3d2a6f9748f441101a9ea3a.ctex"]
 
 [params]
 

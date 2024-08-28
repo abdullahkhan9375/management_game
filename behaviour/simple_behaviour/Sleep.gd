@@ -2,7 +2,12 @@ extends DecayableBehavior
 
 class_name Sleep
 
+var segments_spread = {
+	"Green": 7, # green
+	"Yellow": 3, # yellow
+	"Red": 1, # red
+}
+
 func _init():
-	decay_rate = 5
-	threshold = randi() % 10 + 70
-	super._init("Sleep", 100, randi() % 31 + 90)
+	super._init("Sleep", segments_spread)
+

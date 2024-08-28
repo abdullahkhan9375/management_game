@@ -1,5 +1,3 @@
-extends Node
-
 class_name Replenishable
 
 var data: Dictionary
@@ -35,7 +33,6 @@ func replenish(amount: float):
 		val += amount
 	else:
 		val = max_val
-		self.disconnect("replenish", replenish)
 	print("behavior replenished. Current value: ", data["value"])
 	data["value"] = val
 

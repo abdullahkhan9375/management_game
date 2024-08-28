@@ -15,7 +15,6 @@ func update(hour: int):
 	if (block == ""):
 		block = schedule[keys[0]]
 		return
-
 	for idx in range(len(keys) - 1):
 		var i = keys[idx]
 		var j = keys[idx + 1]

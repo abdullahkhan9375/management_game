@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://rte51qpulbga" path="res://character/sprite/moving/walk_4.png" id="9_1hwwo"]
 [ext_resource type="Texture2D" uid="uid://bsmr4n184awcs" path="res://character/sprite/moving/walk_5.png" id="10_7yo81"]
 [ext_resource type="Texture2D" uid="uid://da6vm4qvj7i5" path="res://character/sprite/moving/walk_6.png" id="11_hy3en"]
-[ext_resource type="Script" path="res://character/Movable.gd" id="12_sjwx0"]
+[ext_resource type="Script" path="res://character/meta/Movable.gd" id="12_xqt2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmj2m"]
 size = Vector2(25, 37)
@@ -75,4 +75,19 @@ animation = &"moving"
 frame_progress = 0.711884
 
 [node name="Movable" type="Node2D" parent="."]
-script = ExtResource("12_sjwx0")
+script = ExtResource("12_xqt2c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -61.0
+offset_top = -80.0
+offset_right = 51.0
+offset_bottom = -64.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -6.0
+offset_right = 126.0
+offset_bottom = 21.0

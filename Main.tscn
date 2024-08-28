@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Main.gd" id="1_82i70"]
 [ext_resource type="Texture2D" uid="uid://20x2052udqqr" path="res://Screenshot 2024-08-14 at 8.20.44 am.png" id="2_2y3f7"]
 [ext_resource type="PackedScene" uid="uid://coh3u3qu80pvl" path="res://meta/clock/clock.tscn" id="2_nge3n"]
-[ext_resource type="PackedScene" uid="uid://d1o3pmy8orjtc" path="res://interactables/bed/bed.tscn" id="5_na0bw"]
-[ext_resource type="PackedScene" uid="uid://mliqfhv2a6na" path="res://interactables/work/work_station.tscn" id="5_qca18"]
+[ext_resource type="PackedScene" uid="uid://d1o3pmy8orjtc" path="res://interactable/bed/bed.tscn" id="5_na0bw"]
+[ext_resource type="PackedScene" uid="uid://mliqfhv2a6na" path="res://interactable/work/work_station.tscn" id="5_qca18"]
 [ext_resource type="Script" path="res://meta/character_service/CharacterService.gd" id="6_uflqv"]
 [ext_resource type="Script" path="res://meta/project_manager/ProjectManager.gd" id="7_y6jfa"]
 

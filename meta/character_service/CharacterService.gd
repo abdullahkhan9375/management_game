@@ -11,8 +11,9 @@ func _init():
 func _ready():
 	clock = get_parent().get_node("Clock")
 
-func create_character():
+func create_character(c_name: String):
 	var instance: Character = character_scn.instantiate()
+	instance.set_character_name(c_name)
 	instance.set_clock(clock)
 	instance.position = Vector2(274, 376)
 	characters.append(instance)

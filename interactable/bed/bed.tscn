@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1o3pmy8orjtc"]
 
-[ext_resource type="Script" path="res://interactables/bed/bed.gd" id="1_cqitr"]
-[ext_resource type="Texture2D" uid="uid://b23wggykxfy4s" path="res://interactables/bed/sprite/Screenshot 2024-08-13 at 9.14.44 am.png" id="2_6pcdp"]
+[ext_resource type="Script" path="res://interactable/bed/bed.gd" id="1_cqitr"]
+[ext_resource type="Texture2D" uid="uid://b23wggykxfy4s" path="res://interactable/bed/sprite/Screenshot 2024-08-13 at 9.14.44 am.png" id="2_6pcdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dhrh"]
 size = Vector2(49, 60.2812)

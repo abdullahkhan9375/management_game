@@ -6,8 +6,9 @@ var clock: Clock
 func _ready():
 	clock = $Clock
 	character_service = $CharacterService
-	for i in range(0, 3):
-		character_service.create_character()
+	var names = ["Toby", "Bob", "Mike"]
+	for i in names:
+		character_service.create_character(i)
 	var proj = $ProjectManager
 	proj.assign_to_all()
 

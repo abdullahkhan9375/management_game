@@ -1,18 +1,25 @@
-extends Node
-
 class_name TaskFactory
 
-static func CreateTiredTask(rep, priority):
-	return Rest.new(rep, priority)
+static func CreateRestTask(work_needed):
+	return Task.new(work_needed, "Sleep", "Rest")
 
-static func CreateProject(rep, priority):
-	return Project.new(rep, priority)
+static func CreateDozeOffTask(work_needed):
+	return Task.new(work_needed, "Sleep", "DozeOff")
 
-static func Create(rep: Replenishable):
-	if (rep.get_task_type() == 'Sleep'):
-		return CreateTiredTask(rep, 1)
+static func CreateFaintTask(work_needed):
+	return Task.new(work_needed, "Sleep", "Faint")
 
-	elif (rep.get_task_type() == "Work"):
-		return CreateProject(rep, 1)
+static func CreateSleepTask(alert_level, work_needed):
+	if alert_level == "Green":
+		return CreateRestTask(work_needed)
+	elif alert_level == "Yellow":
+		return CreateDozeOffTask(work_needed)
+	elif alert_level == "Red":
+		return CreateFaintTask(work_needed)
+	return null
 
-	assert(true, "replenishable not recognized")
+static func CreateTask(type, alert_level, work_needed):
+	if (type == 'Sleep'):
+		return CreateSleepTask(alert_level, work_needed)	
+	else:
+		print("behavior not recognized")
