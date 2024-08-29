@@ -6,7 +6,10 @@ enum WORK_STATE {
 	COMPLETED
 }
 
-var work: float
+var work_name: String
+var work_units: float
+var max_value: float
+var type: String
 var state: WORK_STATE
 signal replenish(amount: float)
 
@@ -19,15 +22,26 @@ func is_ongoing():
 func is_inactive():
 	return state == WORK_STATE.INACTIVE
 
-func _init(work_needed):
-	self.work = work_needed
-	self.state = WORK_STATE.INACTIVE
+func start():
+	state = WORK_STATE.ONGOING
 
-func on_work(work_units: float):
-	if (self.work > 0):
-		state = WORK_STATE.ONGOING
-		self.work -= work_units
+func _init(work_needed, type, work_name):
+	self.work_name = work_name
+	self.work_units = work_needed
+	self.type = type
+	self.state = WORK_STATE.INACTIVE
+	self.max_value = work_needed
+
+func work(work_units: float):
+	if (self.work_units > 0):
+		self.work_units -= work_units
 		emit_signal("replenish", work_units)
 	else:
 		state = WORK_STATE.COMPLETED
-		self.work = 0
+		self.work_units = 0
+	
+func get_max_value():
+	return self.max_value
+
+func get_min_value():
+	return 0

@@ -10,7 +10,7 @@ var decay_dict = {
 	"Red": 1
 }
 
-var segments: Array[Segment]
+var segments: Array
 var seg_idx: int = 0
 var prev_seg: Segment = null
 
@@ -43,11 +43,11 @@ func check_segment(seg: Segment):
 		emit_signal("behavior_alert", self.get_task_type(), seg.get_alert_level(), seg.get_value(), self.register_signal)
 		seg_idx += 1
 
-func calc_total_prio():
+func calc_total_prio(task_segments):
 	var sum = 0
-	for segment in segments:
-		var score = segment.get_value()
-		sum += score
+	for key in task_segments.keys():
+		var seg = task_segments[key]
+		sum += seg 
 	return sum
 
 func segment_sorter(s1: Segment, s2: Segment):
@@ -56,12 +56,12 @@ func segment_sorter(s1: Segment, s2: Segment):
 # green, yellow, red
 func create_segments(task_segments):
 	var task_seg_list = []
-	var total = calc_total_prio()
+	var total = calc_total_prio(task_segments)
 	for key in task_segments.keys():
 		var seg_entry = task_segments[key]
 		var max_val = (seg_entry * data["max_value"]) / total	
 		# TODO
 		var decay_rt = decay_dict[key]
-		task_seg_list.append(Segment.new(key, max_val, decay_rt))
+		task_seg_list.append(Segment.new(max_val, decay_rt, key))
 	task_seg_list.sort_custom(segment_sorter)
 	return task_seg_list

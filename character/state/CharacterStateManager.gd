@@ -25,7 +25,8 @@ func on_busy(position = null):
 	state = "BUSY"
 	sprite.play('idle')
 	if (position != null):
+		on_moving()
 		movable.move_to(position)
-
+		
 func get_state():
 	return state

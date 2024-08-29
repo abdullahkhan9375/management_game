@@ -2,7 +2,7 @@ extends Node
 
 class_name TaskManager
 
-var tasks: Array[Workable] 
+var tasks: Array 
 var intent_manager: IntentManager
 
 func _init(clock):
@@ -34,47 +34,49 @@ func task_names_for_type(type: String):
 
 # create task if we get a behavior alert.
 func on_behavior_alert(type, alert_level, work_needed, register_signal):
-	if (tasks_exist_for_type(type)):
-		# update_task(dec)
-		return
-	var task = TaskFactory.CreateTask(type, alert_level, work_needed)
+	print("behavior alert: %, %", [type, alert_level])
+	var task = TaskFactory.Create(type, alert_level, work_needed)
 	if (register_signal.is_valid()):
 		register_signal.call(task)
-	print("Task added % with work %", [task.type, task.work])
-	
+	add_task(task)
+	print("Task added % with work %", [task.type, task.work_units])
+	 
 func tasks_exist_for_type(type):
 	for task in tasks:
 		if (task.type == type):
-			return len(tasks[type]) > 0
+			return true
 	return false
 
 func add_task(aTask):
-	var tasks_for_type = tasks[aTask.type]
-	for task in tasks_for_type:
-		if (task.task_name == aTask.task_name):
-			print("task already exits %", [task.task_name])
+	if (tasks.size() == 0):
+		tasks.append(aTask)
+		return
+	for task in tasks:
+		if (task.work_name == aTask.work_name):
+			print("task already exits %", [task.work_name])
 			return
-	tasks_for_type.append(aTask)
-	tasks[aTask.type] = tasks_for_type
+	tasks.append(aTask)
 
 func current_task(block):
 	for task in tasks:
-		if (task.type == block):
-			return task
+		if (task.type == block and !task.is_completed()):
+				return task
 	return null
 
 func print_tasks():
 	for task in tasks:
-		print("%, %, %, %", [task.type, task.work, task.priority])
+		print("%, %", [task.type, task.work_name, task.work_units])
 
-func remove_task(task_type, task_name):
-	var filtered_li = []
-	var task_for_type = tasks[task_type]
-	for task in task_for_type:
-		if (task.task_name == task_name):
+func garbage_collect():
+	var fil = []
+	for task in tasks:
+		if (task.is_completed()):
 			continue
-		filtered_li.append(task)
-	tasks[task_type] = filtered_li
+			print("gc'ed %", [task.work_name])
+		else:
+			fil.append(task)
+	tasks = fil		
 
 func _on_tick(hour: int):
 	intent_manager._on_tick(hour)
+	garbage_collect()

@@ -4,12 +4,12 @@ class_name Character
 
 var state: CharacterStateManager
 var ctrl: CharacterControl
-var current_task: Task
+var current_task: Workable
 var movable: Movable
 var task_manager: TaskManager
 var scheduler: Scheduler
 var prev_block: String
-var active_task: Task
+var active_task: Workable 
 
 func _init():
 	super._init()
@@ -29,17 +29,18 @@ func set_character_name(c_name: String):
 func do_task():
 	var interactable = Interactable.find_interactable(get_tree(), current_task.type)	
 	if (interactable == null):
-		print("could not find interactable for task type %s", [current_task.type])
 		return
 	print("starting task: %", [current_task.type])
 	state.on_busy(interactable.position)
 
-func get_task():
+func get_work():
 	return current_task
+
+func should_find_work(block):
+	return prev_block != block or current_task.work_name != active_task.work_name or state.get_state() == "IDLE"
 
 func task_control(work_state: Workable.WORK_STATE, type: String, task_name: String):
 	if (work_state == Workable.WORK_STATE.COMPLETED):
-		task_manager.remove_task(type, task_name)
 		current_task = null
 		state.on_idle()
 	
@@ -47,9 +48,9 @@ func _process(delta):
 	ctrl.on_task_update(active_task)
 	var block = scheduler.get_block()
 	current_task = task_manager.current_task(block)
-	if (current_task == null): return
-	if (prev_block != block or current_task.task_name != active_task.task_name):
-		print("new work block: %", [block])
+	if (current_task == null):
+		return
+	if (should_find_work(block)):
 		do_task()
 		prev_block = block
 		active_task = current_task

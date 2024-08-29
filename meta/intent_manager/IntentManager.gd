@@ -11,7 +11,7 @@ func _init(tsk_manager: TaskManager):
 	behaviors = []
 	behaviors.append(Sleep.new())
 	for behav in behaviors:
-		behav.segment_alert.connect(task_manager.on_behavior_alert)
+		behav.behavior_alert.connect(task_manager.on_behavior_alert)
 
 func _on_tick(hour):
 	for behav in behaviors:

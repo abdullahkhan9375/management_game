@@ -13,8 +13,7 @@ func assign_to_all():
 		character.task_manager.add_task(work)
 
 func create_project(name, work_units):
-	var work = Work.new(name, work_units)
-	return TaskFactory.Create(work) 
+	return ProjectFactory.Create(name, work_units) 
 
 func _on_tick(hour):
 	pass

@@ -18,7 +18,7 @@ static func CreateSleepTask(alert_level, work_needed):
 		return CreateFaintTask(work_needed)
 	return null
 
-static func CreateTask(type, alert_level, work_needed):
+static func Create(type, alert_level, work_needed):
 	if (type == 'Sleep'):
 		return CreateSleepTask(alert_level, work_needed)	
 	else:
