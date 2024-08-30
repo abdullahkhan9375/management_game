@@ -10,7 +10,8 @@ func _init(clock: Clock, schedule: Dictionary):
 	schedule_keys.sort()
 	clock.connect("tick", update)
 
-func update(hour: int):
+func update(clock_time: ClockTime):
+	var hour = clock_time.get_hour()
 	var keys = schedule_keys 
 	if (block == ""):
 		block = schedule[keys[0]]

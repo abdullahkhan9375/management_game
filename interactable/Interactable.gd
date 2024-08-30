@@ -10,7 +10,7 @@ func on_interaction_start(character: Character):
 	work.on_start(character)
 	is_free = false
 
-func _on_tick(hour):
+func _on_tick(clock_time: ClockTime):
 	if (work == null): return
 	print("work left %", [work.work_units])
 	work.on_work()

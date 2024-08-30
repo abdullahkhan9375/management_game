@@ -15,5 +15,5 @@ func assign_to_all():
 func create_project(name, work_units):
 	return ProjectFactory.Create(name, work_units) 
 
-func _on_tick(hour):
+func _on_tick(clock_time: ClockTime):
 	pass

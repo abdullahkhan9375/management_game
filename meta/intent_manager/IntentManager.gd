@@ -13,6 +13,6 @@ func _init(tsk_manager: TaskManager):
 	for behav in behaviors:
 		behav.behavior_alert.connect(task_manager.on_behavior_alert)
 
-func _on_tick(hour):
+func _on_tick(clock_time: ClockTime):
 	for behav in behaviors:
 		behav._on_tick();

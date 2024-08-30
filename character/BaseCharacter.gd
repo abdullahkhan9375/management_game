@@ -3,7 +3,7 @@ extends Node2D
 class_name BaseCharacter
 
 var BASE_MOVE_SPEED = 250
-var BASE_PRODUCTIVITY= 25
+var BASE_PRODUCTIVITY= 15
 
 var move_speed: int
 var productivity: int

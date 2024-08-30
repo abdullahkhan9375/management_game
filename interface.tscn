@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cso67ect3luuo"]
+
+[ext_resource type="Script" path="res://meta/clock/ClockControl.gd" id="1_87ubu"]
+[ext_resource type="Texture2D" uid="uid://beeldffaynu14" path="res://label_bg.png" id="1_wgm6o"]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1068.0
+
+[node name="Clock_UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -46.0
+offset_right = 108.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_87ubu")
+
+[node name="TextureRect" type="TextureRect" parent="Clock_UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = -94.0
+offset_right = 138.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_wgm6o")
+
+[node name="ClockTimeLabel" type="Label" parent="Clock_UI/TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.5
+offset_top = -44.0
+offset_right = 80.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "00:00
+"
+horizontal_alignment = 1
+justification_flags = 0

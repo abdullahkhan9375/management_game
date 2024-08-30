@@ -77,6 +77,6 @@ func garbage_collect():
 			fil.append(task)
 	tasks = fil		
 
-func _on_tick(hour: int):
-	intent_manager._on_tick(hour)
+func _on_tick(clock_time: ClockTime):
+	intent_manager._on_tick(clock_time)
 	garbage_collect()

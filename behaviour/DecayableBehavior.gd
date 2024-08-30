@@ -24,10 +24,15 @@ func get_work_units():
 	return data["max_value"] - data["value"]
 
 func current_segment():
+	if (seg_idx >= segments.size()):
+		return null
 	return segments[seg_idx]
 
 func _on_tick():
 	var cur_segment = current_segment()
+	if (cur_segment == null):
+		print("segments exhausted for this behavior")
+		return
 	var val = data["value"]
 	val -= cur_segment.decay_rate
 	if val < 0:

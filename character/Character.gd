@@ -57,6 +57,6 @@ func _process(delta):
 		ctrl.set_task_progress_bar(active_task)
 
 
-func _on_tick(hour: int):
+func _on_tick(clock_time: ClockTime):
 	if (task_manager): task_manager.print_tasks()
 	print("current block %", [scheduler.get_block()])
