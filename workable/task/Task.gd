@@ -13,8 +13,8 @@ func is_maxed():
 
 func on_start(character: Character):
 	self.character = character
+	self.connect("state_change", character.scheduler.work_state_handler)
 	super.start()
-	self.character.task_control(state, type, work_name)
 
 func has_worker(character: Character):
 	if (self.character == null):
@@ -23,10 +23,9 @@ func has_worker(character: Character):
 
 func on_work():
 	super.work(character.get_productivity())
-	self.character.task_control(state, type, work_name)
 
 func on_end(character: Character):
-	self.character.task_control(state, type, work_name)
+	self.disconnect("state_change", character.scheduler.work_state_handler)
 	self.character = null
 
 func set_priority(prio: int):

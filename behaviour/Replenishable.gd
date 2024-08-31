@@ -33,7 +33,6 @@ func replenish(amount: float):
 		val += amount
 	else:
 		val = max_val
-	print("behavior replenished. Current value: ", data["value"])
 	data["value"] = val
 
 func register_signal(task: Task):

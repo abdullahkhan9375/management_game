@@ -34,7 +34,6 @@ func task_names_for_type(type: String):
 
 # create task if we get a behavior alert.
 func on_behavior_alert(type, alert_level, work_needed, register_signal):
-	print("behavior alert: %, %", [type, alert_level])
 	var task = TaskFactory.Create(type, alert_level, work_needed)
 	if (register_signal.is_valid()):
 		register_signal.call(task)

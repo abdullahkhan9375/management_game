@@ -17,8 +17,8 @@ func set_task_progress_bar(task: Workable):
 	task_progress_bar.visible = false
 
 func on_task_update(task: Workable):
-	if (task_progress_bar == null):
-		return
+	if (task_progress_bar == null and task != null):
+		set_task_progress_bar(task)
 	if (task == null or task.is_completed()):
 		task_progress_bar.visible = false
 	elif (task.is_ongoing() and task.has_worker(character)):

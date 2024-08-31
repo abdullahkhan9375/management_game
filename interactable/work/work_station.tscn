@@ -4,15 +4,16 @@
 [ext_resource type="Script" path="res://interactable/work/WorkStation.gd" id="1_u4unt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k7yp"]
-size = Vector2(50, 39)
+size = Vector2(6.375, 6.8125)
 
 [node name="WorkStation" type="Area2D" groups=["Interactable", "Work"]]
 script = ExtResource("1_u4unt")
+desk_name = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(1.78125, 1.90625)
+texture = ExtResource("1_b6dy6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0k7yp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0.999998)
-scale = Vector2(1.78125, 1.90625)
-texture = ExtResource("1_b6dy6")

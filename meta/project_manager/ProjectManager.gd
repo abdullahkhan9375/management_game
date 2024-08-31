@@ -10,7 +10,7 @@ func assign_to_all():
 	var characters = cservice.get_characters()
 	var work: Project = create_project("Project1", 200)
 	for character in characters:
-		character.task_manager.add_task(work)
+		character.scheduler.task_manager.add_task(work)
 
 func create_project(name, work_units):
 	return ProjectFactory.Create(name, work_units) 

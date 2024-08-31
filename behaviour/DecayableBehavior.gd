@@ -31,7 +31,6 @@ func current_segment():
 func _on_tick():
 	var cur_segment = current_segment()
 	if (cur_segment == null):
-		print("segments exhausted for this behavior")
 		return
 	var val = data["value"]
 	val -= cur_segment.decay_rate
